@@ -11,6 +11,7 @@ export class FormioWizard extends FormioForm {
     this.historyPages = {};
     this._nextPage = 1;
     this.buttons = [];
+    this.wizardNav = false;
   }
 
   setPage(num) {
@@ -137,7 +138,10 @@ export class FormioWizard extends FormioForm {
 
   setForm(form) {
     this.pages = [];
-    this.buttons = [];
+    this.wizardNav = false;
+    if (form.enableNavigation) {
+      this.wizardNav = true;
+    }
     each(form.components, (component) => {
       if (component.type === 'panel') {
         this.pages.push(component);
@@ -146,7 +150,7 @@ export class FormioWizard extends FormioForm {
     return this.setPage(this.page);
   }
   build() {
-    // this.createWizardHeader();
+    this.createWizardHeader();
     super.build();
     this.createWizardNav();
   }
@@ -166,6 +170,10 @@ export class FormioWizard extends FormioForm {
   }
 
   createWizardHeader() {
+    if (!this.wizardNav) {
+      return;
+    }
+    
     this.wizardHeader = this.ce('wizardHeader', 'ul', {
       class: 'pagination'
     });
