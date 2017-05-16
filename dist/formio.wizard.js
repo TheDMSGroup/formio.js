@@ -8389,6 +8389,7 @@ var FormioWizard = exports.FormioWizard = function (_FormioForm) {
     _this.historyPages = {};
     _this._nextPage = 1;
     _this.buttons = [];
+    _this.wizardNav = false;
     return _this;
   }
 
@@ -8524,7 +8525,10 @@ var FormioWizard = exports.FormioWizard = function (_FormioForm) {
       var _this4 = this;
 
       this.pages = [];
-      this.buttons = [];
+      this.wizardNav = false;
+      if (form.enableNavigation) {
+        this.wizardNav = true;
+      }
       (0, _each2.default)(form.components, function (component) {
         if (component.type === 'panel') {
           _this4.pages.push(component);
@@ -8558,6 +8562,10 @@ var FormioWizard = exports.FormioWizard = function (_FormioForm) {
     key: 'createWizardHeader',
     value: function createWizardHeader() {
       var _this5 = this;
+
+      if (!this.wizardNav) {
+        return;
+      }
 
       this.wizardHeader = this.ce('wizardHeader', 'ul', {
         class: 'pagination'

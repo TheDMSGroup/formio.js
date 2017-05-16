@@ -76,6 +76,7 @@ export const component = {
       "input": true
     }
   ],
+  "enableNavigation": false,
   "nextPage": null,
   "theme": "default",
   "title": "User Information",
