@@ -8446,7 +8446,7 @@ var FormioWizard = exports.FormioWizard = function (_FormioForm) {
     value: function nextPage() {
       var _this2 = this;
 
-      console.log('nextPage');
+      //console.log('nextPage');
 
       // Validate the form before go to the next page
       if (this.checkValidity(this.submission.data, true)) {
@@ -8469,7 +8469,7 @@ var FormioWizard = exports.FormioWizard = function (_FormioForm) {
   }, {
     key: 'nextPageWithValidation',
     value: function nextPageWithValidation(thisInstance, valid, message) {
-      console.log('nextPageWithValidation');
+      //console.log('nextPageWithValidation');
 
       var proceedToNextPage = false;
 

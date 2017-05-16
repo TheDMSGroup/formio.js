@@ -61,7 +61,7 @@ export class FormioWizard extends FormioForm {
   }
 
   nextPage() {
-    console.log('nextPage');
+    //console.log('nextPage');
 
     // Validate the form before go to the next page
     if (this.checkValidity(this.submission.data, true)) {
@@ -84,7 +84,7 @@ export class FormioWizard extends FormioForm {
   }
 
   nextPageWithValidation(thisInstance, valid, message) {
-    console.log('nextPageWithValidation');
+    //console.log('nextPageWithValidation');
 
     let proceedToNextPage = false;
 
