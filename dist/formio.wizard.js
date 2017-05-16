@@ -2235,7 +2235,10 @@ var BaseComponent = function () {
         this.pristine = false;
       }
       if (this.events) {
-        if (this.type !== 'textfield' && this.type !== 'email' || this.type === 'textfield' && this.error || this.type === 'email' && this.error) {
+
+        // DMS Group
+        // Circumvent native form field validation [events] with our own
+        if (this.type !== 'textfield' && this.type !== 'email' || (this.type === 'textfield' || this.type === 'email') && this.error) {
           this.emit('componentChange', {
             component: this.component,
             value: this.value,
@@ -8446,6 +8449,16 @@ var FormioWizard = exports.FormioWizard = function (_FormioForm) {
     key: 'nextPage',
     value: function nextPage() {
       var _this2 = this;
+
+      // DMS Group
+      // Fixes checkbox check-then-uncheck validation bug
+      for (var i = 0; i < this.components.length; i++) {
+        if (this.components[i].type === 'checkbox' && this.components[i].component.validate.required && (this.components[i].value === null || !this.components[i].value)) {
+
+          delete this.submission.data[this.components[i].component.key];
+        }
+        i++;
+      }
 
       // Validate the form before go to the next page
       if (this.checkValidity(this.submission.data, true)) {

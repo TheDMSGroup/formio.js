@@ -2235,7 +2235,10 @@ var BaseComponent = function () {
         this.pristine = false;
       }
       if (this.events) {
-        if (this.type !== 'textfield' && this.type !== 'email' || this.type === 'textfield' && this.error || this.type === 'email' && this.error) {
+
+        // DMS Group
+        // Circumvent native form field validation [events] with our own
+        if (this.type !== 'textfield' && this.type !== 'email' || (this.type === 'textfield' || this.type === 'email') && this.error) {
           this.emit('componentChange', {
             component: this.component,
             value: this.value,
