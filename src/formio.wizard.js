@@ -61,8 +61,6 @@ export class FormioWizard extends FormioForm {
   }
 
   nextPage() {
-    //console.log('nextPage');
-
     // Validate the form before go to the next page
     if (this.checkValidity(this.submission.data, true)) {
       if (this.beforeNextPageCallback) {
@@ -84,8 +82,6 @@ export class FormioWizard extends FormioForm {
   }
 
   nextPageWithValidation(thisInstance, valid, message) {
-    //console.log('nextPageWithValidation');
-
     let proceedToNextPage = false;
 
     // If no data given, then proceed to the next page.
