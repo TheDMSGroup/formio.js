@@ -7129,7 +7129,7 @@ var FormioForm = exports.FormioForm = function (_FormioComponents) {
         i++;
       }
 
-      // Validate the form builed, before submission
+      // Validate the form before submission
       if (this.checkValidity(this.submission.data, true)) {
         this.loading = true;
         if (!this.formio) {
