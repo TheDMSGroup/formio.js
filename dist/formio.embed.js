@@ -7119,6 +7119,16 @@ var FormioForm = exports.FormioForm = function (_FormioComponents) {
     value: function submit() {
       var _this6 = this;
 
+      // DMS Group
+      // Fixes checkbox check-then-uncheck validation bug
+      for (var i = 0; i < this.components.length; i++) {
+        if (this.components[i].type === 'checkbox' && this.components[i].component.validate.required && (this.components[i].value === null || !this.components[i].value)) {
+
+          delete this.submission.data[this.components[i].component.key];
+        }
+        i++;
+      }
+
       // Validate the form builed, before submission
       if (this.checkValidity(this.submission.data, true)) {
         this.loading = true;
