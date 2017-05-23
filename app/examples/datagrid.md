@@ -30,6 +30,37 @@ form.form = {
             input: true
           },
           {
+            label: 'Gender',
+            key: 'gender',
+            type: 'select',
+            input: true,
+            data: {
+              values: [
+                {
+                  value: 'male',
+                  label: 'Male'
+                },
+                {
+                  value: 'female',
+                  label: 'Female'
+                },
+                {
+                  value: 'other',
+                  label: 'Other'
+                }
+              ]
+            },
+            dataSrc: 'values',
+            template: '<span>{% raw %}{{ item.label }}{% endraw %}</span>'
+          },
+          {
+            type: 'checkbox',
+            label: 'Dependant',
+            key: 'dependant',
+            inputType: 'checkbox',
+            input: true
+          },
+          {
             label: 'Birthdate',
             key: 'birthdate',
             type: 'datetime',
@@ -56,38 +87,12 @@ form.form = {
               readonlyInput: false,
               mousewheel: true,
               arrowkeys: true
-            }
-          },
-          {
-            type: 'checkbox',
-            label: 'Dependant',
-            key: 'dependant',
-            inputType: 'checkbox',
-            input: true
-          },
-          {
-            label: 'Gender',
-            key: 'gender',
-            type: 'select',
-            input: true,
-            data: {
-              values: [
-                {
-                  value: 'male',
-                  label: 'Male'
-                },
-                {
-                  value: 'female',
-                  label: 'Female'
-                },
-                {
-                  value: 'other',
-                  label: 'Other'
-                }
-              ]
             },
-            dataSrc: 'values',
-            template: '<span>{% raw %}{{ item.label }}{% endraw %}</span>'
+            "conditional": {
+              "eq": "true",
+              "when": "dependant",
+              "show": "true"
+            }
           }
         ]
       }
@@ -121,6 +126,37 @@ form.form = {
             input: true
           },
           {
+            label: 'Gender',
+            key: 'gender',
+            type: 'select',
+            input: true,
+            data: {
+              values: [
+                {
+                  value: 'male',
+                  label: 'Male'
+                },
+                {
+                  value: 'female',
+                  label: 'Female'
+                },
+                {
+                  value: 'other',
+                  label: 'Other'
+                }
+              ]
+            },
+            dataSrc: 'values',
+            template: '<span>{% raw %}{{ item.label }}{% endraw %}</span>'
+          },
+          {
+            type: 'checkbox',
+            label: 'Dependant',
+            key: 'dependant',
+            inputType: 'checkbox',
+            input: true
+          },
+          {
             label: 'Birthdate',
             key: 'birthdate',
             type: 'datetime',
@@ -147,38 +183,12 @@ form.form = {
               readonlyInput: false,
               mousewheel: true,
               arrowkeys: true
-            }
-          },
-         {
-           type: 'checkbox',
-           label: 'Dependant',
-           key: 'dependant',
-           inputType: 'checkbox',
-           input: true
-         },
-          {
-            label: 'Gender',
-            key: 'gender',
-            type: 'select',
-            input: true,
-            data: {
-              values: [
-                {
-                  value: 'male',
-                  label: 'Male'
-                },
-                {
-                  value: 'female',
-                  label: 'Female'
-                },
-                {
-                  value: 'other',
-                  label: 'Other'
-                }
-              ]
             },
-            dataSrc: 'values',
-            template: '<span>\{\{ item.label \}\}</span>'
+            "conditional": {
+              "eq": "true",
+              "when": "dependant",
+              "show": "true"
+            }
           }
         ]
       }
