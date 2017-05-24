@@ -8971,8 +8971,31 @@ var FormioWizard = exports.FormioWizard = function (_FormioForm) {
         value: function nextPage() {
             var _this3 = this;
 
+            // DMS Group
+            // Fixes checkbox check-then-uncheck validation bug
+            for (var i = 0; i < this.components.length; i++) {
+                if (this.components[i].type === 'checkbox' && this.components[i].component.validate.required && (this.components[i].value === null || !this.components[i].value)) {
+
+                    delete this.submission.data[this.components[i].component.key];
+                }
+                i++;
+            }
+
             // Validate the form builed, before go to the next page
             if (this.checkValidity(this.submission.data, true)) {
+                if (this.beforeNextPageCallback) {
+                    this.beforeNextPageCallback(this, this.submission.data, this.nextPageWithValidation);
+                } else {
+                    var currentPage = this.page;
+                    var nextPage = this.getCondionalNextPage(this.submission.data, currentPage);
+
+                    return this.setPage(nextPage).then(function () {
+                        _this3.historyPages[_this3.page] = currentPage;
+                        _this3._nextPage = _this3.getCondionalNextPage(_this3.submission.data, _this3.page);
+                        _this3.emit('nextPage', { page: _this3.page, submission: _this3.submission });
+                    });
+                }
+
                 this.checkData(this.submission.data, true);
                 return this.beforeNext().then(function () {
                     _this3.history.push(_this3.page);
