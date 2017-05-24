@@ -634,35 +634,9 @@ export class FormioForm extends FormioComponents {
    *
    * @returns {Promise} - A promise when the form is done submitting.
    */
-<<<<<<< HEAD
-  submit() {
-
-    // DMS Group
-    // Fixes checkbox check-then-uncheck validation bug
-    for (var i=0; i < this.components.length; i++) {
-      if (this.components[i].type === 'checkbox'
-        && this.components[i].component.validate.required
-        && (this.components[i].value === null || !this.components[i].value)) {
-
-        delete this.submission.data[this.components[i].component.key];
-      }
-      i++;
-    }
-
-    // Validate the form before submission
-    if (this.checkValidity(this.submission.data, true)) {
-      this.loading = true;
-      if (!this.formio) {
-        return this.onSubmit(this.submission, false);
-      }
-      return this.formio.saveSubmission(this.submission)
-        .then((submission) => this.onSubmit(submission, true))
-        .catch((err) => this.onSubmissionError(err));
-=======
   submit(before) {
     if (!before) {
       return this.beforeSubmit().then(() => this.executeSubmit());
->>>>>>> 75e856fc958c0c7e19823d64f44a4a3420661f6b
     }
     else {
       return this.executeSubmit();
