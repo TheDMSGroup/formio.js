@@ -56,9 +56,9 @@ export class SelectComponent extends BaseComponent {
     _each(items, (item) => {
 
       // Add the choice to the select list.
-      this.choices._addChoice(false, false, this.itemValue(item), this.itemTemplate(item));
+      this.choices._addChoice(false, item.disabled, this.itemValue(item), this.itemTemplate(item));
     });
-
+    
     // If a value is provided, then select it.
     if (this.value) {
       this.setValue(this.value, true);
@@ -144,6 +144,8 @@ export class SelectComponent extends BaseComponent {
       placeholder: !!this.component.placeholder,
       placeholderValue: this.component.placeholder,
       removeItemButton: true,
+      searchEnabled: false,
+      shouldSort: false,
       itemSelectText: '',
       classNames: {
         containerOuter: 'choices form-group formio-choices',

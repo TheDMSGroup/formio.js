@@ -830,10 +830,10 @@ export class BaseComponent {
       this.pristine = false;
     }
       if (this.events) {
-
+        
           // DMS Group
           // Circumvent native form field validation [events] with our own
-          if (this.type !== 'textfield' && this.type !== 'email' || ((this.type === 'textfield' || this.type === 'email') && this.error)) {
+          if (this.type !== 'textfield' && this.type !== 'email'  && this.type !== 'select' || ((this.type === 'textfield' || this.type === 'email' || this.type === 'select' ) && this.error)) {
               this.emit('componentChange', {
                   component: this.component,
                   value: this.value,
