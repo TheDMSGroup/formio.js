@@ -2348,7 +2348,7 @@ var BaseComponent = function () {
       if (typeof this.component.calculateValue === 'string') {
         try {
           var row = this.data;
-          var val = eval('var value = [];' + this.component.calculateValue.toString() + '; return value;');
+          var val = eval('var value = [];' + this.component.calculateValue.toString() + ';');
           this.setValue(val);
         } catch (e) {
           /* eslint-disable no-console */
