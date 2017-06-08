@@ -5602,6 +5602,7 @@ var SelectComponent = exports.SelectComponent = function (_BaseComponent) {
         placeholder: !!this.component.placeholder,
         placeholderValue: this.component.placeholder,
         removeItemButton: true,
+        removeItems: false,
         searchEnabled: false,
         shouldSort: false,
         itemSelectText: '',
