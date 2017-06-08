@@ -926,7 +926,7 @@ export class BaseComponent {
     if (typeof this.component.calculateValue === 'string') {
       try {
         let row = this.data;
-        let val = eval('var value = [];' + this.component.calculateValue.toString() + '; return value;');
+        let val = eval('var value = [];' + this.component.calculateValue.toString() + ';');
         this.setValue(val);
       }
       catch (e) {
