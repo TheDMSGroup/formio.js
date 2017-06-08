@@ -144,6 +144,7 @@ export class SelectComponent extends BaseComponent {
       placeholder: !!this.component.placeholder,
       placeholderValue: this.component.placeholder,
       removeItemButton: true,
+      removeItems: false,
       searchEnabled: false,
       shouldSort: false,
       itemSelectText: '',
